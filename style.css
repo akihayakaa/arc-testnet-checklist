@@ -694,3 +694,35 @@ footer {
         justify-content: center;
     }
 }
+/* Style for the faucet link button */
+.task-actions {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.faucet-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--secondary-color), #00B894);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.faucet-link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+    background: linear-gradient(135deg, #00B894, var(--secondary-color));
+}
