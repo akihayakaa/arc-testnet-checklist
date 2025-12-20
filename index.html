@@ -44,7 +44,11 @@
                 <p class="section-description">Complete these essential tasks to master the Arc testnet ecosystem.</p>
                 
                 <div class="tasks-container">
-           <div class="task-card" data-category="beginner">
+
+                    
+                    <!-- Task 1 -->
+                    
+                    <div class="task-card" data-category="beginner">
     <div class="task-header">
         <div class="task-checkbox">
             <input type="checkbox" id="task1" class="task-checkbox-input">
@@ -70,6 +74,11 @@
     </div>
 </div>
 
+
+                    
+                    <!-- Task 2 -->
+
+                    
 <div class="task-card" data-category="beginner">
     <div class="task-header">
         <div class="task-checkbox">
@@ -92,7 +101,7 @@
 </div>
 
                     
-                    <!-- Task 2 (formerly Task 3) -->
+                    <!-- Task 3 -->
                     <div class="task-card" data-category="beginner">
                         <div class="task-header">
                             <div class="task-checkbox">
@@ -114,93 +123,76 @@
                         </div>
                     </div>
 
-                    <!-- Task 3 (formerly Task 4) -->
-                    <div class="task-card" data-category="intermediate">
-                        <div class="task-header">
-                            <div class="task-checkbox">
-                                <input type="checkbox" id="task3" class="task-checkbox-input">
-                                <label for="task3" class="checkbox-custom"></label>
-                            </div>
-                            <div class="task-info">
-                                <h3 class="task-title">Deploy Smart Contract</h3>
-                                <div class="task-difficulty intermediate">Intermediate</div>
-                            </div>
-                            <div class="task-icon">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                        </div>
-                        <p class="task-description">Deploy a simple smart contract (like a greeting contract) to Arc.</p>
-                        <div class="task-hint">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Use CosmWasm template to start</span>
-                        </div>
-                    </div>
+                    <!-- Task 4 -->
 
-                    <!-- Task 4 (formerly Task 7) -->
-                    <div class="task-card" data-category="intermediate">
-                        <div class="task-header">
-                            <div class="task-checkbox">
-                                <input type="checkbox" id="task4" class="task-checkbox-input">
-                                <label for="task4" class="checkbox-custom"></label>
-                            </div>
-                            <task-info>
-                                <h3 class="task-title">Stake Tokens</h3>
-                                <div class="task-difficulty intermediate">Intermediate</div>
-                            </task-info>
-                            <div class="task-icon">
-                                <i class="fas fa-coins"></i>
-                            </div>
-                        </div>
-                        <p class="task-description">Delegate your testnet tokens to a validator to earn rewards.</p>
-                        <div class="task-hint">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Choose validators with good uptime</span>
-                        </div>
-                    </div>
+<div class="task-card" data-category="intermediate">
+    <div class="task-header">
+        <div class="task-checkbox">
+            <input type="checkbox" id="task4" class="task-checkbox-input">
+            <label for="task4" class="checkbox-custom"></label>
+        </div>
+        <div class="task-info">
+            <h3 class="task-title">Deploy Smart Contract</h3>
+            <div class="task-difficulty intermediate">Intermediate</div>
+        </div>
+        <div class="task-icon">
+            <i class="fas fa-file-contract"></i>
+        </div>
+    </div>
+    <p class="task-description">Deploy a Solidity contract to Arc Testnet.</p>
+    <div class="task-hint">
+        <i class="fas fa-lightbulb"></i>
+        <span>Use Remix IDE or Hardhat to deploy</span>
+    </div>
+</div>
+                    
+                    <!-- Task 5-->
 
-                    <!-- Task 5 (formerly Task 9) -->
-                    <div class="task-card" data-category="advanced">
-                        <div class="task-header">
-                            <div class="task-checkbox">
-                                <input type="checkbox" id="task5" class="task-checkbox-input">
-                                <label for="task5" class="checkbox-custom"></label>
-                            </div>
-                            <div class="task-info">
-                                <h3 class="task-title">Report a Bug</h3>
-                                <div class="task-difficulty advanced">Advanced</div>
-                            </div>
-                            <div class="task-icon">
-                                <i class="fas fa-bug"></i>
-                            </div>
-                        </div>
-                        <p class="task-description">Find and report a bug or issue on GitHub with detailed steps.</p>
-                        <div class="task-hint">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Quality bug reports are highly valued</span>
-                        </div>
-                    </div>
+                    
+<div class="task-card" data-category="intermediate">
+    <div class="task-header">
+        <div class="task-checkbox">
+            <input type="checkbox" id="task5" class="task-checkbox-input">
+            <label for="task5" class="checkbox-custom"></label>
+        </div>
+        <div class="task-info">
+            <h3 class="task-title">Interact with Contract</h3>
+            <div class="task-difficulty intermediate">Intermediate</div>
+        </div>
+        <div class="task-icon">
+            <i class="fas fa-hand-pointer"></i>
+        </div>
+    </div>
+    <p class="task-description">Call functions on your deployed contract.</p>
+    <div class="task-hint">
+        <i class="fas fa-lightbulb"></i>
+        <span>Try store() and retrieve() on SimpleStorage</span>
+    </div>
+</div>
 
-                    <!-- Task 6 (formerly Task 10) -->
+
+
+                    <!-- Task 6  -->
                     <div class="task-card" data-category="beginner">
-                        <div class="task-header">
-                            <div class="task-checkbox">
-                                <input type="checkbox" id="task6" class="task-checkbox-input">
-                                <label for="task6" class="checkbox-custom"></label>
-                            </div>
-                            <div class="task-info">
-                                <h3 class="task-title">Share Experience</h3>
-                                <div class="task-difficulty beginner">Beginner</div>
-                            </div>
-                            <div class="task-icon">
-                                <i class="fas fa-share-alt"></i>
-                            </div>
-                        </div>
-                        <p class="task-description">Tweet about your Arc testnet experience and tag @arc.</p>
-                        <div class="task-hint">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Use hashtag #ArcTestnet</span>
-                        </div>
-                    </div>
+    <div class="task-header">
+        <div class="task-checkbox">
+            <input type="checkbox" id="task6" class="task-checkbox-input">
+            <label for="task6" class="checkbox-custom"></label>
+        </div>
+        <div class="task-info">
+            <h3 class="task-title">Share Experience</h3>
+            <div class="task-difficulty beginner">Beginner</div>
+        </div>
+        <div class="task-icon">
+            <i class="fas fa-share-alt"></i>
+        </div>
+    </div>
+    <p class="task-description">Tweet about your Arc testnet experience.</p>
+    <div class="task-hint">
+        <i class="fas fa-lightbulb"></i>
+        <span>Use #ArcTestnet and tag @arc</span>
+    </div>
+</div>
                 </div>
             </section>
 
