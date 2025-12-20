@@ -27,18 +27,34 @@
     --transition: all 0.3s ease;
 }
 
+/* Background dengan fallback color */
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0c0c1d 0%, #1a1a2e 100%);
+    background-color: #0c0c1d; /* Fallback jika foto gagal load */
+    background-image: 
+        linear-gradient(rgba(15, 15, 35, 0.9), rgba(26, 26, 46, 0.95)),
+        url('https://your-photo-link.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
 }
 
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    /* === TAMBAH 3 BARIS INI === */
+    background: rgba(26, 26, 46, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    /* === SAMPAI SINI === */
 }
 
 /* Header Styles */
