@@ -304,6 +304,34 @@ main {
     border-left: 3px solid var(--primary-color);
 }
 
+/* Style for the faucet link button */
+.task-actions {
+    margin-bottom: 15px;
+}
+
+.faucet-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.faucet-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(138, 43, 226, 0.3);
+    color: white;
+}
+
 /* Controls Section */
 .controls-section {
     background: var(--card-bg);
