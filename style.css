@@ -27,34 +27,31 @@
     --transition: all 0.3s ease;
 }
 
-/* Background dengan fallback color */
+/* ========== BACKGROUND FIX ========== */
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0c0c1d; /* Fallback jika foto gagal load */
+    background-color: #0c0c1d;
     background-image: 
-        linear-gradient(rgba(15, 15, 35, 0.9), rgba(26, 26, 46, 0.95)),
+        linear-gradient(rgba(15, 15, 35, 0.85), rgba(26, 26, 46, 0.9)),
         url('https://i.ibb.co.com/HLSH6QH7/Capture.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
 }
 
-
-
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    /* === TAMBAH 3 BARIS INI === */
+    margin: 20px auto;
+    padding: 30px;
     background: rgba(26, 26, 46, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    /* === SAMPAI SINI === */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Header Styles */
@@ -320,32 +317,37 @@ main {
     border-left: 3px solid var(--primary-color);
 }
 
-/* Style for the faucet link button */
+/* ========== TASK ACTIONS FIX ========== */
 .task-actions {
-    margin-bottom: 15px;
+    margin: 15px 0;
+    text-align: center;
 }
 
 .faucet-link-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--secondary-color), #00B894);
     color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
     border: none;
     cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 .faucet-link-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(138, 43, 226, 0.3);
-    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
+    background: linear-gradient(135deg, #00B894, var(--secondary-color));
 }
 
 /* Controls Section */
@@ -709,36 +711,4 @@ footer {
         width: 100%;
         justify-content: center;
     }
-}
-/* Style for the faucet link button */
-.task-actions {
-    margin: 15px 0;
-    text-align: center;
-}
-
-.faucet-link-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: linear-gradient(135deg, var(--secondary-color), #00B894);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.faucet-link-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 212, 170, 0.4);
-    background: linear-gradient(135deg, #00B894, var(--secondary-color));
 }
