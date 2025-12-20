@@ -33,7 +33,7 @@ body {
     background-color: #0c0c1d; /* Fallback jika foto gagal load */
     background-image: 
         linear-gradient(rgba(15, 15, 35, 0.9), rgba(26, 26, 46, 0.95)),
-        url('https://your-photo-link.jpg');
+        url('https://i.ibb.co.com/HLSH6QH7/Capture.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
