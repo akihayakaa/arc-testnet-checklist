@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const intermediateCompleted = document.getElementById('intermediateCompleted');
     const advancedCompleted = document.getElementById('advancedCompleted');
     
-    // Task data with difficulty levels (6 tasks)
+    // Task data with difficulty levels (6 tasks - UPDATED)
     const tasks = [
-        { id: 'task1', difficulty: 'beginner', title: 'Claim Testnet Tokens' },
-        { id: 'task2', difficulty: 'beginner', title: 'First Transaction' },
-        { id: 'task3', difficulty: 'intermediate', title: 'Deploy Smart Contract' },
-        { id: 'task4', difficulty: 'intermediate', title: 'Stake Tokens' },
-        { id: 'task5', difficulty: 'advanced', title: 'Report a Bug' },
+        { id: 'task1', difficulty: 'beginner', title: 'Claim Testnet USDC' },
+        { id: 'task2', difficulty: 'beginner', title: 'Setup MetaMask for Arc' },
+        { id: 'task3', difficulty: 'beginner', title: 'Send Test Transaction' },
+        { id: 'task4', difficulty: 'intermediate', title: 'Deploy Smart Contract' },
+        { id: 'task5', difficulty: 'intermediate', title: 'Interact with Contract' },
         { id: 'task6', difficulty: 'beginner', title: 'Share Experience' }
     ];
     
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalTasks = checkboxes.length;
         const percentage = Math.round((completedTasks / totalTasks) * 100);
         
-        const shareText = `🚀 I've completed ${completedTasks}/${totalTasks} tasks (${percentage}%) on the Arc Testnet Checklist!\n\nCheck it out: ${window.location.href}\n\n#ArcTestnet #ArcBlockchain`;
+        const shareText = `🚀 I've completed ${completedTasks}/${totalTasks} tasks (${percentage}%) on the Arc Testnet Checklist!\n\nCheck it out: ${window.location.href}\n\n#ArcTestnet #BuildOnArc`;
         
         // Try to use Web Share API if available
         if (navigator.share) {
