@@ -115,6 +115,11 @@
                             </div>
                         </div>
                         <p class="task-description">Send USDC to another testnet address to test the network.</p>
+                        <div class="task-actions">
+                            <button id="sendToFrensBtn" class="faucet-link-btn send-btn">
+                                <i class="fas fa-paper-plane"></i> Send to Frens
+                            </button>
+                        </div>
                         <div class="task-hint">
                             <i class="fas fa-lightbulb"></i>
                             <span>Send 0.01 USDC to a friend's test address</span>
@@ -286,6 +291,66 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Send USDC Modal -->
+    <div id="sendUsdcModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-paper-plane"></i> Send USDC to Frens</h2>
+                <button class="modal-close" id="closeSendModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipientAddress">
+                        <i class="fas fa-wallet"></i> Recipient Address
+                    </label>
+                    <input 
+                        type="text" 
+                        id="recipientAddress" 
+                        class="form-input" 
+                        placeholder="0x..."
+                        spellcheck="false"
+                    >
+                    <small class="form-hint">Enter your friend's wallet address</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-coins"></i> Select Amount
+                    </label>
+                    <div class="amount-options">
+                        <button class="amount-btn" data-amount="0.01">
+                            <span class="amount-value">0.01</span>
+                            <span class="amount-label">USDC</span>
+                        </button>
+                        <button class="amount-btn" data-amount="0.05">
+                            <span class="amount-value">0.05</span>
+                            <span class="amount-label">USDC</span>
+                        </button>
+                        <button class="amount-btn" data-amount="0.1">
+                            <span class="amount-value">0.1</span>
+                            <span class="amount-label">USDC</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="transaction-summary">
+                    <div class="summary-row">
+                        <span>You will send:</span>
+                        <span class="summary-amount" id="summaryAmount">0 USDC</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Network:</span>
+                        <span>Arc Testnet</span>
+                    </div>
+                </div>
+                
+                <button id="confirmSendBtn" class="modal-btn modal-btn-primary" disabled>
+                    <i class="fas fa-paper-plane"></i> Send Transaction
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Toast Notification -->
