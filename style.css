@@ -356,6 +356,23 @@ main {
     background: linear-gradient(135deg, #00B894, var(--secondary-color));
 }
 
+/* MetaMask Button Style */
+.metamask-btn {
+    background: linear-gradient(135deg, #F6851B, #E2761B) !important;
+    box-shadow: 0 4px 15px rgba(246, 133, 27, 0.3) !important;
+}
+
+.metamask-btn:hover {
+    background: linear-gradient(135deg, #E2761B, #CD6116) !important;
+    box-shadow: 0 6px 20px rgba(246, 133, 27, 0.5) !important;
+}
+
+.metamask-btn:disabled {
+    background: linear-gradient(135deg, #999, #777) !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 /* Controls Section */
 .controls-section {
     background: rgba(26, 26, 46, 0.4);
