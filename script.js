@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 // Arc Testnet configuration - OFFICIAL DATA
                 const arcTestnetParams = {
-                    chainId: '0x4CE512', // 5042002 in hex
+                    chainId: '0x4CEF52', // 5042002 in hex
                     chainName: 'Arc Testnet',
                     nativeCurrency: {
                         name: 'USDC',
