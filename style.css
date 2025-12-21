@@ -28,20 +28,10 @@
 }
 
 /* ========== BACKGROUND FIX ========== */
+/* TEST: Background warna solid dulu */
 body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0c0c1d;
-    background-image: 
-        linear-gradient(rgba(15, 15, 35, 0.85), rgba(26, 26, 46, 0.9)),
-        url('https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/background.PNG');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-    color: var(--text-primary);
-    min-height: 100vh;
-    line-height: 1.6;
+    background: #1a1a2e; /* Warna gelap */
+    /* Hapus background-image sementara */
 }
 
 .container {
