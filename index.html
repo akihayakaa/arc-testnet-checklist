@@ -6,218 +6,359 @@
     <title>Arc Testnet Checklist</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg">
 </head>
 <body>
-    <div class="app">
-        <header class="header">
-            <div class="brand">
-                <div class="brand-logo">
-                    <img src="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg" alt="Arc">
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg" alt="Arc Logo">
                 </div>
-                <h1 class="brand-name">Arc Testnet</h1>
+                <h1>Arc Testnet Checklist</h1>
+                <p class="subtitle">Complete onboarding tasks to become an expert Arc testnet user</p>
             </div>
-            <p class="header-subtitle">Complete tasks to master the testnet</p>
+            
+            <div class="progress-section">
+                <div class="progress-header">
+                    <h3>Your Progress</h3>
+                    <div class="progress-counter" id="progressCounter">0/6 tasks completed</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+                <div class="completion-message" id="completionMessage">
+                    Start checking tasks to track your progress!
+                </div>
+            </div>
         </header>
 
-        <div class="progress">
-            <div class="progress-header">
-                <span class="progress-title">Progress</span>
-                <span class="progress-stats" id="progressStats">0/6</span>
-            </div>
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <p class="progress-label" id="progressLabel">Get started</p>
-        </div>
-
-        <div class="tasks">
-            <!-- Task 1 -->
-            <div class="task" data-id="1">
-                <div class="task-check">
-                    <input type="checkbox" id="t1" class="checkbox">
-                </div>
-                <div class="task-body">
-                    <div class="task-top">
-                        <h3 class="task-title">Claim Testnet USDC</h3>
-                        <span class="task-level level-beginner">Beginner</span>
+        <!-- Main Content -->
+        <main>
+            <!-- Tasks Section -->
+            <section class="tasks-section">
+                <h2><i class="fas fa-tasks"></i> Testnet Tasks</h2>
+                <p class="section-description">Complete these essential tasks to master the Arc testnet ecosystem.</p>
+                
+                <div class="tasks-container">
+                    
+                    <!-- Task 1: Claim Testnet USDC -->
+                    <div class="task-card" data-category="beginner">
+                        <div class="task-header">
+                            <div class="task-checkbox">
+                                <input type="checkbox" id="task1" class="task-checkbox-input">
+                                <label for="task1" class="checkbox-custom"></label>
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Claim Testnet USDC</h3>
+                                <div class="task-difficulty beginner">Beginner</div>
+                            </div>
+                            <div class="task-icon">
+                                <i class="fas fa-faucet"></i>
+                            </div>
+                        </div>
+                        <p class="task-description">Get testnet USDC from the Circle faucet for gas fees.</p>
+                        <div class="task-actions">
+                            <a href="https://faucet.circle.com/" target="_blank" class="faucet-link-btn">
+                                <i class="fas fa-external-link-alt"></i> Get Testnet USDC
+                            </a>
+                        </div>
+                        <div class="task-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>You can claim 1 testnet USDC every 3 hours</span>
+                        </div>
                     </div>
-                    <p class="task-desc">Get testnet USDC from the Circle faucet</p>
-                    <a href="https://faucet.circle.com/" target="_blank" class="task-action" onclick="event.stopPropagation()">
-                        <i class="fas fa-external-link-alt"></i> Get USDC
-                    </a>
-                    <p class="task-tip">Claim 1 USDC every 3 hours</p>
-                </div>
-            </div>
-
-            <!-- Task 2 -->
-            <div class="task" data-id="2">
-                <div class="task-check">
-                    <input type="checkbox" id="t2" class="checkbox">
-                </div>
-                <div class="task-body">
-                    <div class="task-top">
-                        <h3 class="task-title">Setup MetaMask</h3>
-                        <span class="task-level level-beginner">Beginner</span>
+                    
+                    <!-- Task 2: Setup MetaMask for Arc -->
+                    <div class="task-card" data-category="beginner">
+                        <div class="task-header">
+                            <div class="task-checkbox">
+                                <input type="checkbox" id="task2" class="task-checkbox-input">
+                                <label for="task2" class="checkbox-custom"></label>
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Setup MetaMask for Arc</h3>
+                                <div class="task-difficulty beginner">Beginner</div>
+                            </div>
+                            <div class="task-icon">
+                                <i class="fab fa-metamask"></i>
+                            </div>
+                        </div>
+                        <p class="task-description">Install MetaMask and add Arc Testnet network.</p>
+                        <div class="task-actions">
+                            <button id="addArcToMetaMask" class="faucet-link-btn metamask-btn">
+                                <i class="fab fa-ethereum"></i> Add Arc to MetaMask
+                            </button>
+                        </div>
+                        <div class="task-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Chain ID: 5042002 | Currency: USDC | Explorer: testnet.arcscan.app</span>
+                        </div>
                     </div>
-                    <p class="task-desc">Add Arc Testnet network to MetaMask</p>
-                    <button id="addNetworkBtn" class="task-action" onclick="event.stopPropagation()">
-                        <i class="fab fa-ethereum"></i> Add Network
+                    
+                    <!-- Task 3: Send Test Transaction -->
+                    <div class="task-card" data-category="beginner">
+                        <div class="task-header">
+                            <div class="task-checkbox">
+                                <input type="checkbox" id="task3" class="task-checkbox-input">
+                                <label for="task3" class="checkbox-custom"></label>
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Send Test Transaction</h3>
+                                <div class="task-difficulty beginner">Beginner</div>
+                            </div>
+                            <div class="task-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                        </div>
+                        <p class="task-description">Send USDC to another testnet address to test the network.</p>
+                        <div class="task-actions">
+                            <button id="sendToFrensBtn" class="faucet-link-btn send-btn">
+                                <i class="fas fa-paper-plane"></i> Send to Frens
+                            </button>
+                        </div>
+                        <div class="task-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Send 0.01 USDC to a friend's test address</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Task 4: Deploy Smart Contract -->
+                    <div class="task-card" data-category="intermediate">
+                        <div class="task-header">
+                            <div class="task-checkbox">
+                                <input type="checkbox" id="task4" class="task-checkbox-input">
+                                <label for="task4" class="checkbox-custom"></label>
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Deploy Smart Contract</h3>
+                                <div class="task-difficulty intermediate">Intermediate</div>
+                            </div>
+                            <div class="task-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                        </div>
+                        <p class="task-description">Deploy a Solidity contract to Arc Testnet.</p>
+                        <div class="task-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Use Remix IDE or Hardhat to deploy</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Task 5: Interact with Contract -->
+                    <div class="task-card" data-category="intermediate">
+                        <div class="task-header">
+                            <div class="task-checkbox">
+                                <input type="checkbox" id="task5" class="task-checkbox-input">
+                                <label for="task5" class="checkbox-custom"></label>
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Interact with Contract</h3>
+                                <div class="task-difficulty intermediate">Intermediate</div>
+                            </div>
+                            <div class="task-icon">
+                                <i class="fas fa-hand-pointer"></i>
+                            </div>
+                        </div>
+                        <p class="task-description">Call functions on your deployed contract.</p>
+                        <div class="task-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Try store() and retrieve() on SimpleStorage</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Task 6: Share Experience -->
+                    <div class="task-card" data-category="beginner">
+                        <div class="task-header">
+                            <div class="task-checkbox">
+                                <input type="checkbox" id="task6" class="task-checkbox-input">
+                                <label for="task6" class="checkbox-custom"></label>
+                            </div>
+                            <div class="task-info">
+                                <h3 class="task-title">Share Experience</h3>
+                                <div class="task-difficulty beginner">Beginner</div>
+                            </div>
+                            <div class="task-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                        </div>
+                        <p class="task-description">Tweet about your Arc testnet experience.</p>
+                        <div class="task-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Use #ArcTestnet and tag @arc</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="controls-header">
+                    <h3><i class="fas fa-sliders-h"></i> Controls</h3>
+                    <p>Manage your checklist progress</p>
+                </div>
+                <div class="controls-buttons">
+                    <button id="resetButton" class="btn btn-reset">
+                        <i class="fas fa-redo"></i> Reset All
                     </button>
-                    <p class="task-tip">Chain ID: 5042002</p>
-                </div>
-            </div>
-
-            <!-- Task 3 -->
-            <div class="task" data-id="3">
-                <div class="task-check">
-                    <input type="checkbox" id="t3" class="checkbox">
-                </div>
-                <div class="task-body">
-                    <div class="task-top">
-                        <h3 class="task-title">Send Test Transaction</h3>
-                        <span class="task-level level-beginner">Beginner</span>
-                    </div>
-                    <p class="task-desc">Send USDC to another testnet address</p>
-                    <button id="sendTxBtn" class="task-action" onclick="event.stopPropagation()">
-                        <i class="fas fa-paper-plane"></i> Send USDC
+                    <button id="shareButton" class="btn btn-share">
+                        <i class="fas fa-share"></i> Share Progress
                     </button>
-                    <p class="task-tip">Send 0.01 USDC to test</p>
+                    <button id="exportButton" class="btn btn-export">
+                        <i class="fas fa-download"></i> Export Tasks
+                    </button>
                 </div>
-            </div>
+            </section>
 
-            <!-- Task 4 -->
-            <div class="task" data-id="4">
-                <div class="task-check">
-                    <input type="checkbox" id="t4" class="checkbox">
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-header">
+                    <h3><i class="fas fa-chart-bar"></i> Your Stats</h3>
                 </div>
-                <div class="task-body">
-                    <div class="task-top">
-                        <h3 class="task-title">Deploy Smart Contract</h3>
-                        <span class="task-level level-intermediate">Intermediate</span>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon beginner-bg">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="beginnerCompleted">0</div>
+                            <div class="stat-label">Beginner Tasks</div>
+                        </div>
                     </div>
-                    <p class="task-desc">Deploy a Solidity contract to Arc Testnet</p>
-                    <p class="task-tip">Use Remix IDE or Hardhat</p>
-                </div>
-            </div>
-
-            <!-- Task 5 -->
-            <div class="task" data-id="5">
-                <div class="task-check">
-                    <input type="checkbox" id="t5" class="checkbox">
-                </div>
-                <div class="task-body">
-                    <div class="task-top">
-                        <h3 class="task-title">Interact with Contract</h3>
-                        <span class="task-level level-intermediate">Intermediate</span>
+                    <div class="stat-card">
+                        <div class="stat-icon intermediate-bg">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="intermediateCompleted">0</div>
+                            <div class="stat-label">Intermediate Tasks</div>
+                        </div>
                     </div>
-                    <p class="task-desc">Call functions on your deployed contract</p>
-                    <p class="task-tip">Try store() and retrieve()</p>
-                </div>
-            </div>
-
-            <!-- Task 6 -->
-            <div class="task" data-id="6">
-                <div class="task-check">
-                    <input type="checkbox" id="t6" class="checkbox">
-                </div>
-                <div class="task-body">
-                    <div class="task-top">
-                        <h3 class="task-title">Share Experience</h3>
-                        <span class="task-level level-beginner">Beginner</span>
+                    <div class="stat-card">
+                        <div class="stat-icon advanced-bg">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="advancedCompleted">0</div>
+                            <div class="stat-label">Advanced Tasks</div>
+                        </div>
                     </div>
-                    <p class="task-desc">Tweet about your Arc testnet experience</p>
-                    <p class="task-tip">Use #ArcTestnet tag</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg" alt="Arc Logo">
+                    </div>
+                    <div class="footer-text">
+                        <h4>Arc Testnet Checklist</h4>
+                        <p>Your companion for Arc blockchain testnet onboarding</p>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <div class="footer-madeby">
+                        <i class="fas fa-code"></i>
+                        <span>Made by aki hayaka</span>
+                        <div class="footer-social">
+                            <a href="https://x.com/aki_hayaka" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://github.com/akihayakaa" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <a href="https://discord.com/invite/buildonarc" target="_blank" class="footer-link">
+                            <i class="fab fa-discord"></i> Arc Discord
+                        </a>
+                        <a href="https://x.com/arc" target="_blank" class="footer-link">
+                            <i class="fab fa-twitter"></i> Arc Twitter
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-disclaimer">
+                    <p><i class="fas fa-info-circle"></i> This is an unofficial community tool for Arc testnet. Always verify information from official sources.</p>
                 </div>
             </div>
-        </div>
-
-        <div class="actions">
-            <h3 class="actions-title">Actions</h3>
-            <div class="actions-buttons">
-                <button id="resetBtn" class="action-btn">
-                    <i class="fas fa-redo"></i> Reset
-                </button>
-                <button id="shareBtn" class="action-btn">
-                    <i class="fas fa-share"></i> Share
-                </button>
-                <button id="exportBtn" class="action-btn">
-                    <i class="fas fa-download"></i> Export
-                </button>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <div class="footer-links">
-                <a href="https://discord.com/invite/buildonarc" target="_blank" class="footer-link">
-                    <i class="fab fa-discord"></i> Discord
-                </a>
-                <a href="https://x.com/arc" target="_blank" class="footer-link">
-                    <i class="fab fa-twitter"></i> Twitter
-                </a>
-                <a href="https://x.com/aki_hayaka" target="_blank" class="footer-link">
-                    <i class="fab fa-twitter"></i> @aki_hayaka
-                </a>
-                <a href="https://github.com/akihayakaa" target="_blank" class="footer-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
-            <p class="footer-credit">Made by aki hayaka</p>
         </footer>
     </div>
 
-    <!-- Send Modal -->
-    <div id="sendModal" class="modal">
-        <div class="modal-dialog">
+    <!-- Send USDC Modal -->
+    <div id="sendUsdcModal" class="modal">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Send USDC</h2>
-                <button id="closeModalBtn" class="modal-close">&times;</button>
+                <h2><i class="fas fa-paper-plane"></i> Send USDC to Frens</h2>
+                <button class="modal-close" id="closeSendModal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="field">
-                    <label class="field-label">Recipient Address</label>
-                    <input type="text" id="addressInput" class="field-input" placeholder="0x...">
-                    <p class="field-hint">Enter wallet address</p>
+                <div class="form-group">
+                    <label for="recipientAddress">
+                        <i class="fas fa-wallet"></i> Recipient Address
+                    </label>
+                    <input 
+                        type="text" 
+                        id="recipientAddress" 
+                        class="form-input" 
+                        placeholder="0x..."
+                        spellcheck="false"
+                    >
+                    <small class="form-hint">Enter your friend's wallet address</small>
                 </div>
-                <div class="field">
-                    <label class="field-label">Amount</label>
-                    <div class="amounts">
-                        <button class="amount-option" data-val="0.01">
-                            <div class="amount-value">0.01</div>
-                            <div class="amount-label">USDC</div>
+                
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-coins"></i> Select Amount
+                    </label>
+                    <div class="amount-options">
+                        <button class="amount-btn" data-amount="0.01">
+                            <span class="amount-value">0.01</span>
+                            <span class="amount-label">USDC</span>
                         </button>
-                        <button class="amount-option" data-val="0.05">
-                            <div class="amount-value">0.05</div>
-                            <div class="amount-label">USDC</div>
+                        <button class="amount-btn" data-amount="0.05">
+                            <span class="amount-value">0.05</span>
+                            <span class="amount-label">USDC</span>
                         </button>
-                        <button class="amount-option" data-val="0.1">
-                            <div class="amount-value">0.1</div>
-                            <div class="amount-label">USDC</div>
+                        <button class="amount-btn" data-amount="0.1">
+                            <span class="amount-value">0.1</span>
+                            <span class="amount-label">USDC</span>
                         </button>
                     </div>
                 </div>
-                <div class="summary">
+                
+                <div class="transaction-summary">
                     <div class="summary-row">
-                        <span>Amount</span>
-                        <span class="summary-amount" id="summaryAmt">0 USDC</span>
+                        <span>You will send:</span>
+                        <span class="summary-amount" id="summaryAmount">0 USDC</span>
                     </div>
                     <div class="summary-row">
-                        <span>Network</span>
+                        <span>Network:</span>
                         <span>Arc Testnet</span>
                     </div>
                 </div>
-                <button id="confirmTxBtn" class="modal-btn" disabled>
+                
+                <button id="confirmSendBtn" class="modal-btn modal-btn-primary" disabled>
                     <i class="fas fa-paper-plane"></i> Send Transaction
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Toast -->
+    <!-- Toast Notification -->
     <div id="toast" class="toast">
-        <i class="fas fa-check-circle toast-icon"></i>
-        <span class="toast-text" id="toastText">Success</span>
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <span class="toast-message">Progress updated!</span>
+        </div>
     </div>
 
     <script src="script.js"></script>
