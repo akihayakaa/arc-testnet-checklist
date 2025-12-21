@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const intermediateCompleted = document.getElementById('intermediateCompleted');
     const advancedCompleted = document.getElementById('advancedCompleted');
     
-    // Task data with difficulty levels (6 tasks - UPDATED)
+    // Task data with difficulty levels (6 tasks)
     const tasks = [
         { id: 'task1', difficulty: 'beginner', title: 'Claim Testnet USDC' },
         { id: 'task2', difficulty: 'beginner', title: 'Setup MetaMask for Arc' },
@@ -26,11 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 'task6', difficulty: 'beginner', title: 'Share Experience' }
     ];
     
-    // Debug: Check if tasks match checkboxes
-    console.log('🔍 Debug Info:');
-    console.log('- Total checkboxes found:', checkboxes.length);
-    console.log('- Total tasks defined:', tasks.length);
-    console.log('- Task IDs:', tasks.map(t => t.id));
+    console.log('✅ Arc Testnet Checklist - Initialized');
+    console.log('📊 Total tasks:', tasks.length);
+    console.log('📋 Total checkboxes:', checkboxes.length);
     
     // Messages for different progress levels
     const messages = [
@@ -48,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (savedState) {
             try {
                 const state = JSON.parse(savedState);
-                console.log('📁 Loaded saved state:', state);
+                console.log('💾 Loaded saved progress');
                 
                 checkboxes.forEach(checkbox => {
                     if (state[checkbox.id]) {
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`📊 Progress: ${completedTasks}/${totalTasks} (${Math.round(percentage)}%)`);
     }
     
-    // Update difficulty statistics - FIXED VERSION
+    // Update difficulty statistics
     function updateDifficultyStats() {
         let beginnerCount = 0;
         let intermediateCount = 0;
@@ -120,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (intermediateCompleted) intermediateCompleted.textContent = intermediateCount;
         if (advancedCompleted) advancedCompleted.textContent = advancedCount;
         
-        console.log(`🏆 Stats: Beginner=${beginnerCount}, Intermediate=${intermediateCount}, Advanced=${advancedCount}`);
+        console.log(`🏆 Stats - Beginner: ${beginnerCount}, Intermediate: ${intermediateCount}, Advanced: ${advancedCount}`);
     }
     
     // Save checklist state to localStorage
@@ -132,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             localStorage.setItem('arcChecklistState', JSON.stringify(state));
-            console.log('💾 Saved state to localStorage');
         } catch (error) {
             console.error('❌ Error saving to localStorage:', error);
         }
@@ -228,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
         URL.revokeObjectURL(url);
         
         showToast('Tasks exported!');
-        console.log('📄 Exported tasks as text file');
+        console.log('📄 Tasks exported successfully');
     }
     
     // Event Listeners
@@ -239,23 +236,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add event listeners only if buttons exist
+    // Add event listeners for buttons
     if (resetButton) {
         resetButton.addEventListener('click', resetChecklist);
-    } else {
-        console.warn('⚠️ Reset button not found');
     }
     
     if (shareButton) {
         shareButton.addEventListener('click', shareProgress);
-    } else {
-        console.warn('⚠️ Share button not found');
     }
     
     if (exportButton) {
         exportButton.addEventListener('click', exportTasks);
-    } else {
-        console.warn('⚠️ Export button not found');
     }
     
     // Task card click (toggles checkbox)
@@ -274,24 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Debug: Check background image
-    console.log('🎨 Background check:');
-    console.log('- Body background:', document.body.style.backgroundImage);
-    console.log('- Body computed background:', window.getComputedStyle(document.body).backgroundImage);
-    
-    // Force background refresh if needed
-    setTimeout(() => {
-        const bodyStyle = window.getComputedStyle(document.body);
-        const bgImage = bodyStyle.backgroundImage;
-        
-        if (!bgImage || bgImage === 'none' || !bgImage.includes('Capture.png')) {
-            console.log('🔄 Background not detected, forcing refresh...');
-            document.body.style.backgroundImage = "linear-gradient(rgba(15, 15, 35, 0.85), rgba(26, 26, 46, 0.9)), url('https://i.ibb.co.com/HLSH6QH7/Capture.png?v=' + Date.now())";
-        }
-    }, 1000);
-    
     // Initialize the checklist
     initializeChecklist();
     
-    console.log('✅ Arc Testnet Checklist initialized successfully!');
+    console.log('🎉 Arc Testnet Checklist ready!');
 });
