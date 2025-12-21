@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } else {
         console.warn('⚠️ Add Arc to MetaMask button not found');
-    }!';
+    }
     
     // Initialize the checklist
     initializeChecklist();
