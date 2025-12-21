@@ -343,6 +343,185 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Add Arc to MetaMask button not found');
     }
     
+    // Send to Frens Modal Functionality
+    const sendToFrensBtn = document.getElementById('sendToFrensBtn');
+    const sendUsdcModal = document.getElementById('sendUsdcModal');
+    const closeSendModal = document.getElementById('closeSendModal');
+    const recipientAddress = document.getElementById('recipientAddress');
+    const amountButtons = document.querySelectorAll('.amount-btn');
+    const confirmSendBtn = document.getElementById('confirmSendBtn');
+    const summaryAmount = document.getElementById('summaryAmount');
+    
+    let selectedAmount = null;
+    
+    // USDC Contract Address on Arc Testnet (Native USDC)
+    const USDC_CONTRACT = '0x0000000000000000000000000000000000000000'; // Native USDC on Arc
+    
+    // Open modal
+    if (sendToFrensBtn) {
+        sendToFrensBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Check if MetaMask is installed
+            if (typeof window.ethereum === 'undefined') {
+                alert('MetaMask is not installed! Please install MetaMask extension first.\n\nVisit: https://metamask.io/download/');
+                window.open('https://metamask.io/download/', '_blank');
+                return;
+            }
+            
+            sendUsdcModal.classList.add('show');
+            console.log('📤 Send to Frens modal opened');
+        });
+    }
+    
+    // Close modal
+    if (closeSendModal) {
+        closeSendModal.addEventListener('click', function() {
+            sendUsdcModal.classList.remove('show');
+            resetSendForm();
+        });
+    }
+    
+    // Close modal when clicking outside
+    sendUsdcModal.addEventListener('click', function(e) {
+        if (e.target === sendUsdcModal) {
+            sendUsdcModal.classList.remove('show');
+            resetSendForm();
+        }
+    });
+    
+    // Amount button selection
+    amountButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove selected class from all buttons
+            amountButtons.forEach(b => b.classList.remove('selected'));
+            
+            // Add selected class to clicked button
+            this.classList.add('selected');
+            
+            // Update selected amount
+            selectedAmount = this.getAttribute('data-amount');
+            summaryAmount.textContent = `${selectedAmount} USDC`;
+            
+            // Check if form is valid
+            validateForm();
+            
+            console.log('💰 Selected amount:', selectedAmount, 'USDC');
+        });
+    });
+    
+    // Validate recipient address input
+    recipientAddress.addEventListener('input', function() {
+        validateForm();
+    });
+    
+    // Form validation
+    function validateForm() {
+        const address = recipientAddress.value.trim();
+        const isValidAddress = address.length === 42 && address.startsWith('0x');
+        const hasAmount = selectedAmount !== null;
+        
+        if (isValidAddress && hasAmount) {
+            confirmSendBtn.disabled = false;
+        } else {
+            confirmSendBtn.disabled = true;
+        }
+    }
+    
+    // Reset form
+    function resetSendForm() {
+        recipientAddress.value = '';
+        selectedAmount = null;
+        summaryAmount.textContent = '0 USDC';
+        amountButtons.forEach(b => b.classList.remove('selected'));
+        confirmSendBtn.disabled = true;
+    }
+    
+    // Send transaction
+    if (confirmSendBtn) {
+        confirmSendBtn.addEventListener('click', async function() {
+            const recipient = recipientAddress.value.trim();
+            
+            if (!recipient || !selectedAmount) {
+                showToast('Please fill in all fields');
+                return;
+            }
+            
+            try {
+                confirmSendBtn.disabled = true;
+                confirmSendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                
+                console.log('💸 Sending', selectedAmount, 'USDC to', recipient);
+                
+                // Request account access
+                const accounts = await window.ethereum.request({ 
+                    method: 'eth_requestAccounts' 
+                });
+                
+                const from = accounts[0];
+                
+                // Convert amount to Wei (18 decimals for USDC on Arc)
+                const amountInWei = '0x' + (parseFloat(selectedAmount) * Math.pow(10, 18)).toString(16);
+                
+                // Since USDC is the native currency on Arc Testnet, we use simple ETH transfer
+                const transactionParameters = {
+                    from: from,
+                    to: recipient,
+                    value: amountInWei,
+                    chainId: '0x4CEF52' // Arc Testnet
+                };
+                
+                console.log('📝 Transaction params:', transactionParameters);
+                
+                // Send transaction
+                const txHash = await window.ethereum.request({
+                    method: 'eth_sendTransaction',
+                    params: [transactionParameters]
+                });
+                
+                console.log('✅ Transaction sent! Hash:', txHash);
+                
+                // Close modal
+                sendUsdcModal.classList.remove('show');
+                resetSendForm();
+                
+                // Show success message
+                showToast(`Transaction sent! Hash: ${txHash.substring(0, 10)}...`);
+                
+                // Auto-check task 3
+                setTimeout(() => {
+                    const task3Checkbox = document.getElementById('task3');
+                    if (task3Checkbox && !task3Checkbox.checked) {
+                        task3Checkbox.checked = true;
+                        task3Checkbox.dispatchEvent(new Event('change'));
+                    }
+                }, 2000);
+                
+                // Reset button
+                confirmSendBtn.disabled = false;
+                confirmSendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Transaction';
+                
+            } catch (error) {
+                console.error('❌ Transaction failed:', error);
+                
+                let errorMessage = 'Transaction failed!';
+                
+                if (error.code === 4001) {
+                    errorMessage = 'You rejected the transaction.';
+                } else if (error.code === -32002) {
+                    errorMessage = 'Request already pending in MetaMask.';
+                } else if (error.message) {
+                    errorMessage = error.message;
+                }
+                
+                showToast(errorMessage);
+                
+                confirmSendBtn.disabled = false;
+                confirmSendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Transaction';
+            }
+        });
+    }
+    
     // Initialize the checklist
     initializeChecklist();
     
