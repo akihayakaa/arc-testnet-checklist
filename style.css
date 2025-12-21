@@ -47,20 +47,20 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     padding: 30px;
-    background: rgba(26, 26, 46, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 46, 0.3);
+    backdrop-filter: blur(8px);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Header Styles */
 header {
-    background: var(--card-bg);
+    background: rgba(26, 26, 46, 0.4);
     border-radius: var(--border-radius);
     padding: 30px;
     margin-bottom: 30px;
-    border: 1px solid var(--card-border);
-    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .logo-section {
@@ -101,10 +101,10 @@ h1 {
 
 /* Progress Section */
 .progress-section {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: calc(var(--border-radius) - 4px);
     padding: 25px;
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .progress-header {
@@ -192,8 +192,8 @@ main {
 }
 
 .task-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: rgba(26, 26, 46, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--border-radius);
     padding: 20px;
     transition: var(--transition);
@@ -351,10 +351,10 @@ main {
 
 /* Controls Section */
 .controls-section {
-    background: var(--card-bg);
+    background: rgba(26, 26, 46, 0.4);
     border-radius: var(--border-radius);
     padding: 25px;
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .controls-header p {
@@ -424,10 +424,10 @@ main {
 
 /* Stats Section */
 .stats-section {
-    background: var(--card-bg);
+    background: rgba(26, 26, 46, 0.4);
     border-radius: var(--border-radius);
     padding: 25px;
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .stats-grid {
@@ -437,14 +437,14 @@ main {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
     padding: 25px;
     display: flex;
     align-items: center;
     gap: 20px;
     transition: var(--transition);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-card:hover {
@@ -497,10 +497,10 @@ footer {
 }
 
 .footer-content {
-    background: var(--card-bg);
+    background: rgba(26, 26, 46, 0.4);
     border-radius: var(--border-radius);
     padding: 30px;
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-brand {
