@@ -2,6 +2,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // Simple Storage Contract ABI & Bytecode
+    // Contract Source Code:
+    // pragma solidity ^0.8.0;
+    // contract SimpleStorage {
+    //     uint256 private storedData;
+    //     function store(uint256 x) public { storedData = x; }
+    //     function retrieve() public view returns (uint256) { return storedData; }
+    // }
+    
     const CONTRACTS = {
         SimpleStorage: {
             name: 'SimpleStorage',
@@ -14,15 +22,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     "type": "function"
                 },
                 {
-                    "inputs": [{"internalType": "uint256", "name": "num", "type": "uint256"}],
+                    "inputs": [{"internalType": "uint256", "name": "x", "type": "uint256"}],
                     "name": "store",
                     "outputs": [],
                     "stateMutability": "nonpayable",
                     "type": "function"
                 }
             ],
-            // SimpleStorage bytecode (compiled Solidity contract)
-            bytecode: '0x608060405234801561001057600080fd5b5060c78061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80632e64cec11460375780636057361d146051575b600080fd5b603d6069565b6040516048919060a2565b60405180910390f35b6067600480360381019060639190606f565b6072565b005b60008054905090565b8060008190555050565b60008135905060898160ad565b92915050565b609c8160bb565b82525050565b600060208201905060b76000830184608f565b92915050565b6000819050919050565b60c08160bb565b811460ca57600080fd5b5056fea2646970667358221220b5b3b7a3c3a99e79e5ce3c4e8bdbf2a5d0c7f6e5a9b8c7d6e5f4a3b2c1d0e90f64736f6c63430008000033'
+            // Valid SimpleStorage bytecode compiled with Solidity 0.8.0
+            bytecode: '0x608060405234801561001057600080fd5b50610150806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80632e64cec11461003b5780636057361d14610059575b600080fd5b610043610075565b60405161005091906100d9565b60405180910390f35b610073600480360381019061006e919061009d565b61007e565b005b60008054905090565b8060008190555050565b60008135905061009781610103565b92915050565b6000602082840312156100b3576100b26100fe565b5b60006100c184828501610088565b91505092915050565b6100d3816100f4565b82525050565b60006020820190506100ee60008301846100ca565b92915050565b6000819050919050565b600080fd5b61010c816100f4565b811461011757600080fd5b5056fea2646970667358221220890ad571dbf8fff7e822033b9cc2346299f75152dd4fad7eea8f5d13ce62c43764736f6c63430008070033'
         }
     };
     
@@ -267,12 +275,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h5><i class="fas fa-save"></i> store</h5>
                     <div class="function-type">Write Function</div>
                     <div class="function-input-group">
-                        <label>Number to store</label>
+                        <label>Number to store (uint256)</label>
                         <input 
                             type="number" 
                             class="function-input" 
                             id="store-input-${contractIndex}"
-                            placeholder="Enter a number"
+                            placeholder="Enter a number (e.g., 123)"
+                            min="0"
                         >
                     </div>
                     <button 
@@ -322,8 +331,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const input = document.getElementById(`store-input-${contractIndex}`);
         const value = input.value;
         
-        if (!value) {
+        if (!value || value.trim() === '') {
             showToast('Please enter a number', 'error');
+            return;
+        }
+        
+        // Validate it's a valid positive integer
+        const numValue = parseInt(value);
+        if (isNaN(numValue) || numValue < 0) {
+            showToast('Please enter a valid positive number', 'error');
             return;
         }
         
@@ -332,10 +348,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'eth_requestAccounts' 
             });
             
-            // Encode function call
-            const functionSignature = '0x6057361d'; // store(uint256) function selector
-            const paddedValue = parseInt(value).toString(16).padStart(64, '0');
+            // Encode function call for store(uint256 x)
+            // Function selector: keccak256("store(uint256)") = 0x6057361d
+            const functionSignature = '0x6057361d';
+            
+            // Convert number to hex and pad to 32 bytes (64 hex chars)
+            const paddedValue = numValue.toString(16).padStart(64, '0');
             const data = functionSignature + paddedValue;
+            
+            console.log('📤 Calling store with value:', numValue);
+            console.log('📝 Encoded data:', data);
             
             const transactionParameters = {
                 from: accounts[0],
@@ -349,14 +371,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 params: [transactionParameters]
             });
             
-            console.log('✅ Store transaction:', txHash);
-            showToast(`Number ${value} stored! TX: ${txHash.substring(0, 10)}...`);
+            console.log('✅ Store transaction hash:', txHash);
+            showToast(`Number ${numValue} stored! TX: ${txHash.substring(0, 10)}...`);
             
+            // Clear input
             input.value = '';
             
         } catch (error) {
             console.error('❌ Store failed:', error);
-            showToast(error.message || 'Failed to store number', 'error');
+            
+            let errorMessage = 'Failed to store number';
+            if (error.code === 4001) {
+                errorMessage = 'You rejected the transaction';
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+            
+            showToast(errorMessage, 'error');
         }
     };
     
@@ -369,8 +400,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'eth_requestAccounts' 
             });
             
-            // Encode function call
-            const functionSignature = '0x2e64cec1'; // retrieve() function selector
+            // Function selector for retrieve()
+            // keccak256("retrieve()") = 0x2e64cec1
+            const functionSignature = '0x2e64cec1';
+            
+            console.log('📥 Calling retrieve() on contract:', contract.address);
             
             const result = await window.ethereum.request({
                 method: 'eth_call',
@@ -381,7 +415,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 'latest']
             });
             
-            // Decode result
+            console.log('📊 Raw result:', result);
+            
+            // Decode result (convert hex to decimal)
             const value = parseInt(result, 16);
             
             console.log('✅ Retrieved value:', value);
@@ -389,14 +425,29 @@ document.addEventListener('DOMContentLoaded', function() {
             const resultDiv = document.getElementById(`retrieve-result-${contractIndex}`);
             const valueSpan = document.getElementById(`retrieve-value-${contractIndex}`);
             
-            valueSpan.textContent = value;
-            resultDiv.classList.add('show');
+            if (resultDiv && valueSpan) {
+                valueSpan.textContent = value;
+                resultDiv.classList.add('show');
+            }
             
             showToast(`Retrieved value: ${value}`);
             
         } catch (error) {
             console.error('❌ Retrieve failed:', error);
-            showToast(error.message || 'Failed to retrieve number', 'error');
+            console.error('Error details:', {
+                code: error.code,
+                message: error.message,
+                data: error.data
+            });
+            
+            let errorMessage = 'Failed to retrieve number';
+            if (error.message && error.message.includes('InvalidJump')) {
+                errorMessage = 'Contract execution failed. The contract may not be deployed correctly.';
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+            
+            showToast(errorMessage, 'error');
         }
     };
     
