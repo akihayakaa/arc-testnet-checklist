@@ -354,6 +354,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let selectedAmount = null;
     
+    // Suggested wallet address
+    const SUGGESTED_WALLET = '0x029E4b42a02108429Ea1Eb9f230Ebf9c4B5cf263';
+    
+    // Copy suggested address to clipboard
+    window.copySuggestedAddress = function() {
+        navigator.clipboard.writeText(SUGGESTED_WALLET).then(() => {
+            showToast('Wallet address copied to clipboard!');
+            console.log('📋 Copied suggested address:', SUGGESTED_WALLET);
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+            showToast('Failed to copy address', 'error');
+        });
+    };
+    
+    // Use suggested address (fill input)
+    window.useSuggestedAddress = function() {
+        recipientAddress.value = SUGGESTED_WALLET;
+        validateForm();
+        showToast('Address filled! Now select an amount.');
+        console.log('✅ Using suggested address');
+    };
+    
     // USDC Contract Address on Arc Testnet (Native USDC)
     const USDC_CONTRACT = '0x0000000000000000000000000000000000000000'; // Native USDC on Arc
     
