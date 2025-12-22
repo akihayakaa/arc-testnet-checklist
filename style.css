@@ -814,6 +814,84 @@ footer {
     margin-top: 8px;
 }
 
+/* Suggested Address */
+.suggested-address {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(138, 43, 226, 0.05);
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    border-radius: 8px;
+}
+
+.suggestion-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.suggestion-text i {
+    color: var(--primary-color);
+}
+
+.suggestion-address-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.suggestion-address-text {
+    flex: 1;
+    font-family: 'Courier New', monospace;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    word-break: break-all;
+}
+
+.suggestion-copy-btn,
+.suggestion-use-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.suggestion-copy-btn {
+    background: rgba(138, 43, 226, 0.2);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.suggestion-copy-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.suggestion-use-btn {
+    background: rgba(0, 212, 170, 0.2);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.suggestion-use-btn:hover {
+    background: var(--success-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
 .amount-options {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -981,6 +1059,22 @@ footer {
     }
     
     .footer-link {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Suggested Address Mobile */
+    .suggestion-address-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .suggestion-address-text {
+        font-size: 0.75rem;
+    }
+    
+    .suggestion-copy-btn,
+    .suggestion-use-btn {
         width: 100%;
         justify-content: center;
     }
