@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Smart Contract - Arc Testnet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="deploy.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="deploy-header">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Checklist
+                </a>
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg" alt="Arc Logo">
+                    </div>
+                    <h1>Deploy Smart Contract</h1>
+                    <p class="subtitle">Deploy and interact with contracts on Arc Testnet</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Available Contracts Section -->
+            <section class="contracts-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-code"></i> Available Contracts</h2>
+                    <p class="section-description">Choose a contract to deploy to Arc Testnet</p>
+                </div>
+
+                <div class="contracts-grid">
+                    <!-- SimpleStorage Contract -->
+                    <div class="contract-card" data-contract="SimpleStorage">
+                        <div class="contract-header">
+                            <div class="contract-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="contract-badge">Beginner</div>
+                        </div>
+                        <h3 class="contract-title">SimpleStorage</h3>
+                        <p class="contract-description">A basic contract to store and retrieve a number. Perfect for learning smart contract deployment.</p>
+                        
+                        <div class="contract-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Store number</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Retrieve number</span>
+                            </div>
+                        </div>
+
+                        <div class="contract-info">
+                            <div class="info-item">
+                                <i class="fas fa-code"></i>
+                                <span>Solidity 0.8.0</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Low Gas</span>
+                            </div>
+                        </div>
+
+                        <button class="deploy-contract-btn" data-contract="SimpleStorage">
+                            <i class="fas fa-rocket"></i> Deploy Contract
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Deployed Contracts Section -->
+            <section class="deployed-section" id="deployedSection" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-check-circle"></i> Your Deployed Contracts</h2>
+                    <p class="section-description">Interact with your deployed contracts</p>
+                </div>
+
+                <div id="deployedContractsContainer" class="deployed-contracts">
+                    <!-- Deployed contracts will be inserted here dynamically -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://raw.githubusercontent.com/akihayakaa/arc-testnet-checklist/main/sHyVRItm_400x400.jpg" alt="Arc Logo">
+                    </div>
+                    <div class="footer-text">
+                        <h4>Arc Testnet Tools</h4>
+                        <p>Deploy and interact with smart contracts easily</p>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <div class="footer-madeby">
+                        <i class="fas fa-code"></i>
+                        <span>Made by aki hayaka</span>
+                        <div class="footer-social">
+                            <a href="https://x.com/aki_hayaka" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://github.com/akihayakaa" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <span class="toast-message">Success!</span>
+        </div>
+    </div>
+
+    <script src="deploy.js"></script>
+</body>
+</html>
