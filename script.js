@@ -293,10 +293,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create Twitter Intent URL
             const twitterIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
             
-            // Open Twitter in new window
-            window.open(twitterIntentUrl, '_blank', 'width=550,height=420');
+            // Open Twitter in new tab
+            window.open(twitterIntentUrl, '_blank');
             
-            console.log('🐦 Opening Twitter Intent');
+            console.log('🐦 Opening Twitter Intent in new tab');
             showToast('Opening Twitter... Share your journey!');
             
             // Auto-check task 6 after a delay (assuming they will tweet)
