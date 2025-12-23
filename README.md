@@ -58,7 +58,7 @@ I'm learning these technologies:
 ## 📦 Installation
 
 ### Option 1: Use it Online (Easiest!)
-Just visit the live site: [Your Website URL Here]
+Just visit the live site: [https://aki-hayaka-arc.vercel.app/]
 
 ### Option 2: Run Locally
 If you want to explore the code:
