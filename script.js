@@ -265,6 +265,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Tweet Now Button - Task 6
+    const tweetNowBtn = document.getElementById('tweetNowBtn');
+    if (tweetNowBtn) {
+        tweetNowBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent card click
+            
+            // Calculate progress for personalized tweet
+            const completedTasks = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const totalTasks = checkboxes.length;
+            const percentage = Math.round((completedTasks / totalTasks) * 100);
+            
+            // Tweet templates based on progress
+            let tweetText = '';
+            
+            if (completedTasks === 0) {
+                // Just started
+                tweetText = `🚀 Just started my journey on @arc Testnet!\n\nExploring the ecosystem and learning about blockchain development. Let's go! 💪\n\n#ArcTestnet #BuildOnArc`;
+            } else if (completedTasks < totalTasks) {
+                // In progress
+                tweetText = `⚡ Making progress on @arc Testnet!\n\n✅ Completed ${completedTasks}/${totalTasks} tasks (${percentage}%)\n\nThe tools and ecosystem are amazing. Excited to learn more! 🔥\n\n#ArcTestnet #BuildOnArc`;
+            } else {
+                // Completed all tasks
+                tweetText = `🎉 Completed all ${totalTasks} tasks on @arc Testnet!\n\n✅ Claimed USDC\n✅ Set up MetaMask\n✅ Sent transactions\n✅ Deployed smart contract\n✅ Interacted with contracts\n\nReady to build on Arc! 🚀\n\n#ArcTestnet #BuildOnArc`;
+            }
+            
+            // Create Twitter Intent URL
+            const twitterIntentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            
+            // Open Twitter in new window
+            window.open(twitterIntentUrl, '_blank', 'width=550,height=420');
+            
+            console.log('🐦 Opening Twitter Intent');
+            showToast('Opening Twitter... Share your journey!');
+            
+            // Auto-check task 6 after a delay (assuming they will tweet)
+            setTimeout(() => {
+                const task6Checkbox = document.getElementById('task6');
+                if (task6Checkbox && !task6Checkbox.checked) {
+                    task6Checkbox.checked = true;
+                    task6Checkbox.dispatchEvent(new Event('change'));
+                }
+            }, 2000);
+        });
+    }
+    
     // Add Arc to MetaMask button
     const addArcButton = document.getElementById('addArcToMetaMask');
     if (addArcButton) {
