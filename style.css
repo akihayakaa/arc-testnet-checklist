@@ -384,6 +384,18 @@ main {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important;
 }
 
+/* Tweet Button Style */
+.tweet-btn {
+    background: linear-gradient(135deg, #1DA1F2, #0d8bd9) !important;
+    box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3) !important;
+}
+
+.tweet-btn:hover {
+    background: linear-gradient(135deg, #0d8bd9, #0c7abf) !important;
+    box-shadow: 0 6px 20px rgba(29, 161, 242, 0.5) !important;
+    transform: translateY(-3px);
+}
+
 /* Controls Section */
 .controls-section {
     background: rgba(26, 26, 46, 0.4);
