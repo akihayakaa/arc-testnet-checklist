@@ -1090,4 +1090,98 @@ footer {
         width: 100%;
         justify-content: center;
     }
+
+    /* ========== DAPPS CARD STYLES ========== */
+
+.dapps-card {
+    grid-column: 1 / -1; /* Full width */
+    max-width: 100%;
+}
+
+.dapps-list {
+    margin: 20px 0;
+    display: grid;
+    gap: 20px;
+}
+
+.dapp-category {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid var(--card-border);
+}
+
+.category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dapp-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.dapp-link:hover {
+    background: rgba(138, 43, 226, 0.1);
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+    transform: translateX(5px);
+}
+
+.dapp-link:last-child {
+    margin-bottom: 0;
+}
+
+.dapp-link i:first-child {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.dapp-link span {
+    flex: 1;
+    font-weight: 500;
+}
+
+.dapp-link i:last-child {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.dapp-link:hover i:last-child {
+    opacity: 1;
+}
+
+/* Responsive Dapps Card */
+@media (max-width: 768px) {
+    .dapps-card {
+        grid-column: 1;
+    }
+    
+    .dapp-link {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+    
+    .category-title {
+        font-size: 1rem;
+    }
+}
 }
