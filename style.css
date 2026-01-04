@@ -1090,7 +1090,7 @@ footer {
         width: 100%;
         justify-content: center;
     }
-
+}
 /* ========== DAPPS BUTTON ========== */
 .dapps-btn {
     background: linear-gradient(135deg, #FF6B6B, #EE5A6F) !important;
