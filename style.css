@@ -1091,97 +1091,158 @@ footer {
         justify-content: center;
     }
 
-    /* ========== DAPPS CARD STYLES ========== */
-
-.dapps-card {
-    grid-column: 1 / -1; /* Full width */
-    max-width: 100%;
+/* ========== DAPPS BUTTON ========== */
+.dapps-btn {
+    background: linear-gradient(135deg, #FF6B6B, #EE5A6F) !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
 }
 
-.dapps-list {
-    margin: 20px 0;
-    display: grid;
-    gap: 20px;
+.dapps-btn:hover {
+    background: linear-gradient(135deg, #EE5A6F, #C44569) !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5) !important;
 }
 
-.dapp-category {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+/* ========== DAPPS MODAL ========== */
+.modal-large {
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-description {
+    background: rgba(138, 43, 226, 0.1);
     padding: 15px;
-    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dapps-category {
+    margin-bottom: 30px;
 }
 
 .category-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 15px;
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--card-border);
 }
 
-.dapp-link {
+.dapps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.dapp-button {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
-    margin-bottom: 8px;
+    gap: 15px;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: var(--text-secondary);
+    border-radius: 12px;
     text-decoration: none;
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
 
-.dapp-link:hover {
+.dapp-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.dapp-button:hover::before {
+    left: 100%;
+}
+
+.dapp-button:hover {
     background: rgba(138, 43, 226, 0.1);
     border-color: var(--primary-color);
-    color: var(--text-primary);
-    transform: translateX(5px);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(138, 43, 226, 0.3);
 }
 
-.dapp-link:last-child {
-    margin-bottom: 0;
+.dapp-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
 }
 
-.dapp-link i:first-child {
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    width: 20px;
-    text-align: center;
-}
-
-.dapp-link span {
+.dapp-info {
     flex: 1;
-    font-weight: 500;
 }
 
-.dapp-link i:last-child {
+.dapp-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.dapp-info p {
+    font-size: 0.85rem;
     color: var(--text-muted);
-    font-size: 0.9rem;
+}
+
+.dapp-external {
+    color: var(--text-muted);
+    font-size: 1rem;
     opacity: 0;
     transition: var(--transition);
 }
 
-.dapp-link:hover i:last-child {
+.dapp-button:hover .dapp-external {
     opacity: 1;
+    transform: translateX(3px);
 }
 
-/* Responsive Dapps Card */
+/* Responsive Dapps Modal */
 @media (max-width: 768px) {
-    .dapps-card {
-        grid-column: 1;
+    .modal-large {
+        max-width: 95%;
+        max-height: 85vh;
     }
     
-    .dapp-link {
-        font-size: 0.9rem;
-        padding: 10px 12px;
+    .dapps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dapp-button {
+        padding: 12px;
+    }
+    
+    .dapp-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
     
     .category-title {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 }
 }
