@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('📋 Total checkboxes:', checkboxes.length);
     
     // Messages for different progress levels
-    const messages = [
+const messages = [
         { min: 0, max: 0, text: "Start checking tasks to track your progress!" },
         { min: 1, max: 2, text: "Great start! You're getting familiar with Arc testnet." },
         { min: 3, max: 5, text: "Excellent progress! You're becoming an Arc power user." },
@@ -589,6 +589,46 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+        // Dapps Modal Functionality
+    const openDappsModal = document.getElementById('openDappsModal');
+    const dappsModal = document.getElementById('dappsModal');
+    const closeDappsModal = document.getElementById('closeDappsModal');
+    
+    // Open modal
+    if (openDappsModal) {
+        openDappsModal.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dappsModal.classList.add('show');
+            console.log('🚀 Dapps modal opened');
+        });
+    }
+    
+    // Close modal
+    if (closeDappsModal) {
+        closeDappsModal.addEventListener('click', function() {
+            dappsModal.classList.remove('show');
+        });
+    }
+    
+    // Close when clicking outside
+    dappsModal.addEventListener('click', function(e) {
+        if (e.target === dappsModal) {
+            dappsModal.classList.remove('show');
+        }
+    });
+    
+    // Auto-check task when clicking any dapp link
+    document.querySelectorAll('.dapp-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const dappsCheckbox = document.getElementById('task-dapps');
+            if (dappsCheckbox && !dappsCheckbox.checked) {
+                dappsCheckbox.checked = true;
+                dappsCheckbox.dispatchEvent(new Event('change'));
+                showToast('Task marked as complete!');
+            }
+        });
+    });
     
     // Initialize the checklist
     initializeChecklist();
