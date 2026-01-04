@@ -16,13 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const intermediateCompleted = document.getElementById('intermediateCompleted');
     const advancedCompleted = document.getElementById('advancedCompleted');
     
-    // Task data with difficulty levels (6 tasks)
+// Task data with difficulty levels (7 tasks)
     const tasks = [
         { id: 'task1', difficulty: 'beginner', title: 'Claim Testnet USDC' },
         { id: 'task2', difficulty: 'beginner', title: 'Setup MetaMask for Arc' },
         { id: 'task3', difficulty: 'beginner', title: 'Send Test Transaction' },
         { id: 'task4', difficulty: 'intermediate', title: 'Deploy Smart Contract' },
         { id: 'task5', difficulty: 'intermediate', title: 'Interact with Contract' },
+        { id: 'task-dapps', difficulty: 'beginner', title: 'Dapps on Arc' },
         { id: 'task6', difficulty: 'beginner', title: 'Share Experience' }
     ];
     
@@ -34,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const messages = [
         { min: 0, max: 0, text: "Start checking tasks to track your progress!" },
         { min: 1, max: 2, text: "Great start! You're getting familiar with Arc testnet." },
-        { min: 3, max: 4, text: "Excellent progress! You're becoming an Arc power user." },
-        { min: 5, max: 5, text: "Almost there! One more task to complete." },
-        { min: 6, max: 6, text: "🎉 Congratulations! You've completed all Arc testnet tasks!" }
+        { min: 3, max: 5, text: "Excellent progress! You're becoming an Arc power user." },
+        { min: 6, max: 6, text: "Almost there! One more task to complete." },
+        { min: 7, max: 7, text: "🎉 Congratulations! You've completed all Arc testnet tasks!" }
     ];
     
     // Initialize from localStorage or set defaults
